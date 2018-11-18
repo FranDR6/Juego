@@ -45,7 +45,6 @@ public class SuperficieDibujo extends Canvas {
 
 		Graphics g = buffer.getDrawGraphics();
 
-		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, ancho, alto);
 
 		ge.dibujar(g);

@@ -12,7 +12,7 @@ public class Mapa {
 		this.imgMapa = new Sprite(ruta);
 	}
 
-	public void dibujar(Graphics g) {
-		g.drawImage(imgMapa.getImagen(), 0, 0, null);
+	public void dibujar(Graphics g, int posicionX, int posicionY) {
+		g.drawImage(imgMapa.getImagen(), 0 - posicionX, 0 - posicionY, null);
 	}
 }

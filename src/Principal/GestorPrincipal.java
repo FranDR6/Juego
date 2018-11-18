@@ -4,6 +4,7 @@ import Estados.GestorControles;
 import Estados.GestorEstados;
 import Graficos.SuperficieDibujo;
 import Graficos.Ventana;
+import Utiles.Constantes;
 
 public class GestorPrincipal {
 
@@ -23,7 +24,7 @@ public class GestorPrincipal {
 	}
 
 	public static void main(String[] args) {
-		GestorPrincipal gp = new GestorPrincipal("JUEGO", 800, 800);
+		GestorPrincipal gp = new GestorPrincipal("JUEGO", Constantes.anchoPantalla, Constantes.altoPantalla);
 
 		gp.iniciarJuego();
 		gp.iniciarBuclePrincipal();
