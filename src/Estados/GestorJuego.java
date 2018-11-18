@@ -13,18 +13,7 @@ public class GestorJuego implements EstadoJuego {
 	Mapa mapaUno = new Mapa(Constantes.mapa1);
 
 	public void actualizar() {
-		if (GestorControles.teclado.isArriba()) {
-			jugador.setPosicionY(jugador.getPosicionY() - 1);
-		}
-		if (GestorControles.teclado.isAbajo()) {
-			jugador.setPosicionY(jugador.getPosicionY() + 1);
-		}
-		if (GestorControles.teclado.isIzquierda()) {
-			jugador.setPosicionX(jugador.getPosicionX() - 1);
-		}
-		if (GestorControles.teclado.isDerecha()) {
-			jugador.setPosicionX(jugador.getPosicionX() + 1);
-		}
+		jugador.actualizar();
 	}
 
 	public void dibujar(Graphics g) {
