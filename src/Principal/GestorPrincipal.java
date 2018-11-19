@@ -1,4 +1,4 @@
- package Principal;
+package Principal;
 
 import Estados.GestorControles;
 import Estados.GestorEstados;
@@ -64,6 +64,7 @@ public class GestorPrincipal {
 			while (delta >= 1) {
 				actualizar();
 				aps++;
+				Constantes.APS = aps;
 				delta--;
 			}
 

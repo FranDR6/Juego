@@ -28,9 +28,11 @@ public class HojaSprites {
 
 		anchoHojaPixeles = imagen.getWidth();
 		altoHojaPiexeles = imagen.getHeight();
+//		System.out.println(anchoHojaPixeles + " " + altoHojaPiexeles);
 
 		anchoHojaSprites = anchoHojaPixeles / tamañoSprite;
 		altoHojaSprites = altoHojaPiexeles / tamañoSprite;
+//		System.out.println(anchoHojaSprites + " " + altoHojaSprites);
 
 		anchoSprites = tamañoSprite;
 		altoSprites = tamañoSprite;
@@ -65,13 +67,13 @@ public class HojaSprites {
 	}
 
 	private void rellenarSpritesDesdeImagen(final BufferedImage imagen) {
-		for (int y = 0; y < altoHojaSprites; y++) {
-			for (int x = 0; x < anchoHojaSprites; x++) {
-				final int posicionX = x * anchoHojaSprites;
-				final int posicionY = y * altoHojaSprites;
+		for (int i = 0; i < anchoHojaSprites; i++) {
+			for (int j = 0; j < altoHojaSprites; j++) {
+				final int posicionX = i * anchoSprites;
+				final int posicionY = j * altoSprites;
 
-				arraySprites[x + y * anchoHojaSprites] = new Sprite(
-						imagen.getSubimage(posicionX, posicionY, anchoHojaSprites, altoHojaSprites));
+				arraySprites[i + j * anchoHojaSprites] = new Sprite(
+						imagen.getSubimage(posicionX, posicionY, altoSprites, anchoSprites));
 			}
 		}
 	}

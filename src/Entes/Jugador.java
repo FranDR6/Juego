@@ -6,14 +6,15 @@ import java.awt.image.BufferedImage;
 
 import Estados.GestorControles;
 import Sprite.HojaSprites;
-import Sprite.Sprite;
 import Utiles.Constantes;
 
 public class Jugador {
 	private double posicionX;
 	private double posicionY;
 
-	private String direccion;
+	private int estadoAnimacion;
+
+	private int direccion;
 
 	private HojaSprites hojaPersonaje;
 
@@ -23,62 +24,84 @@ public class Jugador {
 		this.posicionX = posicionX;
 		this.posicionY = posicionY;
 
-		direccion = "S";
+		estadoAnimacion = 0;
 
-		hojaPersonaje = new HojaSprites("/personaje/01.png", 52, true);
+		direccion = 0;
 
-		imagenActual = hojaPersonaje.obtenerSprite(0,0).getImagen();
+		hojaPersonaje = new HojaSprites(Constantes.personaje1, 64, false);
+
+		imagenActual = hojaPersonaje.obtenerSprite(0, 0).getImagen();
 	}
 
 	public void dibujar(Graphics g) {
 		int centroX = Constantes.anchoPantalla / 2 - 32 / 2;
 		int centroY = Constantes.altoPantalla / 2 - 32 / 2;
 
+		g.setColor(Color.RED);
+		g.drawRect(centroX + 10, centroY + 4, 64 - 20, 64 - 8);
 		g.drawImage(imagenActual, centroX, centroY, null);
 	}
 
 	public void actualizar() {
 		if (GestorControles.teclado.isArriba()) {
-			direccion = "N";
-			animar();
-			posicionY -= 1;
+			direccion = 0;
+			animar(direccion);
+			posicionY -= Constantes.velocidadPersonajeAndando;
 		}
 		if (GestorControles.teclado.isAbajo()) {
-			direccion = "S";
-			animar();
-			posicionY += 1;
+			direccion = 1;
+			animar(direccion);
+			posicionY += Constantes.velocidadPersonajeAndando;
 		}
 		if (GestorControles.teclado.isIzquierda()) {
-			direccion = "O";
-			animar();
-			posicionX -= 1;
+			direccion = 2;
+			animar(direccion);
+			posicionX -= Constantes.velocidadPersonajeAndando;
 		}
 		if (GestorControles.teclado.isDerecha()) {
-			direccion = "E";
-			animar();
-			posicionX += 1;
+			direccion = 3;
+			animar(direccion);
+			posicionX += Constantes.velocidadPersonajeAndando;
 		}
 	}
 
-	public void animar() {
-		switch (direccion) {
-		case "N":
-			imagenActual = hojaPersonaje.obtenerSprite(1, 0).getImagen();
-			break;
-		case "S":
-			imagenActual = hojaPersonaje.obtenerSprite(0, 0).getImagen();
-			break;
-		case "E":
-			imagenActual = hojaPersonaje.obtenerSprite(3, 0).getImagen();
-			break;
-		case "O":
-			imagenActual = hojaPersonaje.obtenerSprite(2, 0).getImagen();
-			break;
-		case "NO":
-		case "NE":
-		case "SE":
-		case "SO":
+	private void animar(int direccion) {
+		int frecuenciaAnimacion = 8;
+		int limiteEstados = 7;
+
+		if (Constantes.APS % frecuenciaAnimacion == 0) {
+			estadoAnimacion++;
+			if (estadoAnimacion >= limiteEstados) {
+				estadoAnimacion = 0;
+			}
+			switch (direccion) {
+			case 0:
+				if (estadoAnimacion==0) {
+					estadoAnimacion++;
+				}
+				imagenActual = hojaPersonaje.obtenerSprite(estadoAnimacion, 1).getImagen();
+				break;
+			case 1:
+				if (estadoAnimacion == 0) {
+					estadoAnimacion++;
+				}
+				imagenActual = hojaPersonaje.obtenerSprite(estadoAnimacion, 0).getImagen();
+				break;
+			case 2:
+				if (estadoAnimacion==0) {
+					estadoAnimacion++;
+				}
+				imagenActual = hojaPersonaje.obtenerSprite(estadoAnimacion, 2).getImagen();
+				break;
+			case 3:
+				if (estadoAnimacion==0) {
+					estadoAnimacion++;
+				}
+				imagenActual = hojaPersonaje.obtenerSprite(estadoAnimacion, 3).getImagen();
+				break;
+			}
 		}
+
 	}
 
 	public void setPosicionX(double posicionX) {
