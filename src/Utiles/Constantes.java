@@ -11,6 +11,7 @@ public class Constantes {
 	public static final int altoPantalla = 800;
 	public static int APS = 0;
 
-	public static final double velocidadPersonajeAndando = 0.7;
+	public static final double velocidadPersonajeAndando = 1;
+	public static final double velocidadPersonajeCorriendo = 1.5;
 
 }
