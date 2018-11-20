@@ -46,51 +46,52 @@ public class Jugador {
 
 	public void actualizar() {
 
+		// Norte
 		if (GestorControles.teclado.isArriba() && !GestorControles.teclado.isIzquierda()
 				&& !GestorControles.teclado.isDerecha() && !GestorControles.teclado.isAbajo()) {
 			direccion = 0;
 			posicionY -= Constantes.velocidadPersonajeAndando;
 		}
-
+		// Sur
 		if (!GestorControles.teclado.isArriba() && !GestorControles.teclado.isIzquierda()
 				&& !GestorControles.teclado.isDerecha() && GestorControles.teclado.isAbajo()) {
 			direccion = 1;
 			posicionY += Constantes.velocidadPersonajeAndando;
 		}
-
+		// Oeste
 		if (!GestorControles.teclado.isArriba() && GestorControles.teclado.isIzquierda()
 				&& !GestorControles.teclado.isDerecha() && !GestorControles.teclado.isAbajo()) {
 			direccion = 2;
 			posicionX -= Constantes.velocidadPersonajeAndando;
 		}
-
+		// Este
 		if (!GestorControles.teclado.isArriba() && !GestorControles.teclado.isIzquierda()
 				&& GestorControles.teclado.isDerecha() && !GestorControles.teclado.isAbajo()) {
 			direccion = 3;
 			posicionX += Constantes.velocidadPersonajeAndando;
 		}
-
+		// Suroeste
 		if (!GestorControles.teclado.isArriba() && GestorControles.teclado.isIzquierda()
 				&& !GestorControles.teclado.isDerecha() && GestorControles.teclado.isAbajo()) {
 			direccion = 4;
 			posicionY += Constantes.velocidadPersonajeAndando;
 			posicionX -= Constantes.velocidadPersonajeAndando;
 		}
-
+		// Sureste
 		if (!GestorControles.teclado.isArriba() && !GestorControles.teclado.isIzquierda()
 				&& GestorControles.teclado.isDerecha() && GestorControles.teclado.isAbajo()) {
 			direccion = 5;
 			posicionY += Constantes.velocidadPersonajeAndando;
 			posicionX += Constantes.velocidadPersonajeAndando;
 		}
-
+		// Noroeste
 		if (GestorControles.teclado.isArriba() && GestorControles.teclado.isIzquierda()
 				&& !GestorControles.teclado.isDerecha() && !GestorControles.teclado.isAbajo()) {
 			direccion = 6;
 			posicionY -= Constantes.velocidadPersonajeAndando;
 			posicionX -= Constantes.velocidadPersonajeAndando;
 		}
-
+		// Noreste
 		if (GestorControles.teclado.isArriba() && !GestorControles.teclado.isIzquierda()
 				&& GestorControles.teclado.isDerecha() && !GestorControles.teclado.isAbajo()) {
 			direccion = 7;
